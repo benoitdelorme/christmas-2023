@@ -29,7 +29,7 @@ const Snow = {
         this.mp = Math.ceil(this.w * this.h / this.density)
 
         for(let i = 0; i < this.mp; i++){
-            let size = Math.random()*4+5
+            let size = Math.random() * 4 + 5
 
             this.particles.push({
                 x: Math.random() * this.w, //x-coordinate
@@ -37,7 +37,7 @@ const Snow = {
                 w: size,
                 h: size,
                 vy: this.minFallSpeed + Math.random(), //density
-                vx: (Math.random()*this.maxHSpeed) - this.maxHSpeed/2,
+                vx: (Math.random() * this.maxHSpeed) - this.maxHSpeed/2,
                 fill: "#ffffff",
                 s: (Math.random() * 0.2) - 0.1
             })
@@ -53,7 +53,7 @@ const Snow = {
             this.ctx.fillStyle = p.fill
             this.ctx.fillRect(p.x, p.y, p.w, p.h)
 
-            if (p.x > this.w+5 || p.x < -5 || p.y > this.h) {
+            if (p.x > this.w + 5 || p.x < -5 || p.y > this.h) {
                 p.x = Math.random() * this.w
                 p.y = -10
             }
