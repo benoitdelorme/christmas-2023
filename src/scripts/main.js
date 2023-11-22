@@ -68,6 +68,41 @@ const Snow = {
     destroy() {
         this.quit = true
     }
-  }
+}
   
-  var confetti = Snow.init();
+var confetti = Snow.init();
+let interval
+let loveContainer = document.querySelector('.c-love-team-container')
+let loveTeam = [...document.querySelectorAll(".c-love-team")]
+let index = 0
+let nextIndex = 1
+let trigger = document.querySelector(".c-trigger")
+
+const randomLove = () => {
+    loveContainer.style.display = "block"
+
+    loveTeam[index].style.display = "block"
+    loveTeam[nextIndex].style.display = "none"
+
+    index = nextIndex
+    nextIndex = (index == 0) ? 1 : 0
+}
+
+document.querySelector(".c-love").addEventListener('mouseenter', () => {
+    randomLove()
+
+    interval = setInterval(() => {
+        randomLove()
+    }, 100)
+})
+
+document.querySelector(".c-love").addEventListener('mouseleave', () => {
+    loveContainer.style.display = "none"
+    clearInterval(interval)
+})
+
+trigger.addEventListener("click", () => {
+    document.querySelector(".c-maria").style.display = "block"
+    document.querySelector(".c-maria video").play()
+})
+  
